@@ -13,16 +13,16 @@ export const eventData = {
       place: "Grand Bavaro Princess",
       address: "¡Un sí con los pies en la arena!",
       date: "05 Marzo",
-      time: "16:30 hrs",
-      mapLink: "https://maps.app.goo.gl/EuDBJDjDVKTorNGE6"
+      time: "17:30 hrs",
+      mapLink: "https://maps.app.goo.gl/mFaYdQ9ePhocdvSS8"
     },
     reception: {
       receptionImage:"/images/recepcion.png",
       place: "Grand Bavaro Princess",
       address: "¡La fiesta sigue en la terraza principal!",
       date: "05 Marzo",
-      time: "17:30 hrs",
-      mapLink: "https://maps.app.goo.gl/EuDBJDjDVKTorNGE6"
+      time: "18:30 hrs",
+      mapLink: "https://maps.app.goo.gl/mFaYdQ9ePhocdvSS8"
     },
     banks: [
       {
@@ -46,8 +46,8 @@ export const eventData = {
     finalPhoto: "/images/pareja-final.png",
     finalMessage: "Esperamos con ilusión poder celebrar juntos este momento tan especial",
     rsvp: {
-      rsvpImage: "/images/rsvp.png",
-      whatapp: "https://wa.me/50236011737?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20invitaci%C3%B3n",
+          rsvpImage: "/images/c.png", // asegúrate que exista
+          whatsapp: "https://wa.me/50236011737?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20invitaci%C3%B3n",
     },
     footer: {
       social: {

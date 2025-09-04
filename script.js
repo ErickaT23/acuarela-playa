@@ -177,15 +177,39 @@ document.getElementById('show-wishes').addEventListener('click', () => {
   // --- Confirmaciones ---
   // --- Confirmaciones --- (espera a que loads.js defina `eventData.rsvp`)
 // --- Confirmaciones --- (espera a que loads.js defina eventData.rsvp)
-const checkRSVP = setInterval(() => {
-  if (window.eventData?.rsvp?.form && window.eventData?.rsvp?.rsvpImage) {
-    clearInterval(checkRSVP); // ya está definido, dejamos de verificar
+document.addEventListener('DOMContentLoaded', () => {
+  const img = document.getElementById('rsvp-image');
+  const msg = document.getElementById('rsvp-message');
+  const btn = document.getElementById('form-confirm');
 
-    document.getElementById('rsvp-image').src = eventData.rsvp.rsvpImage;
-    document.getElementById('rsvp-message').innerText = "Estamos organizando todo con mucho cariño y tu presencia es parte importante. ¿Nos confirmás si podrás acompañarnos?";
-    document.getElementById('form-confirm').onclick = () => window.open(eventData.rsvp.form, '_blank');
-  }
-}, 100); // revisa cada 100ms hasta que esté listo
+  const checkRSVP = setInterval(() => {
+    const rsvp = window.eventData?.rsvp;
+    if (!rsvp) return;
+
+    // set imagen si existe (no exigimos form)
+    if (rsvp.rsvpImage) {
+      img.src = rsvp.rsvpImage;
+      img.loading = 'lazy';
+      img.alt = 'Confirmación';
+      img.onerror = () => { img.style.display = 'none'; };
+    }
+
+    // mensaje
+    msg.innerText = "Estamos organizando todo con mucho cariño y tu presencia es parte importante. ¿Nos confirmás si podrás acompañarnos?";
+
+    // link de acción: prioriza form, luego whatsapp (y corrige el posible typo 'whatapp')
+    const targetUrl = rsvp.form || rsvp.whatsapp || rsvp.whatapp;
+    if (targetUrl) {
+      btn.onclick = () => window.open(targetUrl, '_blank', 'noopener');
+    } else {
+      btn.disabled = true;
+      btn.textContent = "Pronto habilitaremos la confirmación";
+    }
+
+    clearInterval(checkRSVP);
+  }, 100);
+});
+
 
 
   

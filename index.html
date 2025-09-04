@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>María & Emanuel</title>
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:title" content="Nos casamos - Brenda & Francisco" />
+  <meta property="og:description" content="26 de febrero 2026 · Cancún. ¡Estás invitado a celebrar con nosotros!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.pexels.com/photos/33435965/pexels-photo-33435965.png" /> <!-- Usa una imagen de portada -->
+  <!-- Firebase primero -->
+  <script type="module" src="config.js" defer></script>
+  <script type="module" src="loads.js" defer></script>
+  <script type="module" src="database.js" defer></script> <!-- ✅ PRIMERO database -->
+  <script type="module" src="script.js" defer></script>   <!-- ✅ LUEGO script -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Carattere&amp;family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- SOBRE -->
+    <section id="envelope">
+        <div id="envelope-top"></div>
+         <div id="seal">
+            <h2>M & E</h2> <!-- Tus iniciales -->
+        </div>
+        <div id="envelope-bottom"></div>
+    </section>
+  
+    <div class="main-content hidden">
+    <!-- Foto inicial -->
+    <section id="hero">
+      <img id="hero-image" alt="Foto inicial de la pareja">
+      <div class="hero-text">
+        <h1 id="couple-names"></h1>
+        <h2 id="wedding-date"></h2>
+      </div>
+    </section>
+
+    <!-- Sección de música -->
+    <section id="music-section">
+      <h2 id="song-title"></h2>
+      <button id="playPauseButton">Play</button>
+      <audio id="audioPlayer" loop preload="auto"></audio>
+      <div id="progress-container">
+        <input id="progress-bar" type="range" value="0" min="0" max="100">
+        <div class="time-display">
+          <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de contador de fecha regresiva -->
+    <section id="countdown-section">
+        <div id="marriage-announcement" class="fade-in-element">
+            <h2>¡Hay boda!</h2>
+            <p>Nos encontramos, nos elegimos, y ahora queremos compartir con ustedes el inicio de esta nueva etapa.</p>
+          </div>          
+      <div id="countdown">
+        <div class="unit">
+          <span id="days" class="number">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="unit">
+          <span id="hours" class="number">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="unit">
+          <span id="minutes" class="number">00</span>
+          <span class="label">Minutos</span>
+        </div>
+        <div class="unit">
+          <span id="seconds" class="number">00</span>
+          <span class="label">Segundos</span>
+        </div>
+      </div>
+
+      <div id="calendar-button" class="fade-in-element">
+        <button onclick="addToCalendar()">Agregar al calendario</button>
+      </div>
+      
+    </section>
+
+    <!-- Nombre del invitado -->
+    <section id="guest-name-section">
+      <p id="guest-name"></p>
+    </section>
+
+    <!-- Cantidad de pases -->
+    <section id="passes-section">
+      <p><span id="passes"></span></p>
+    </section>
+
+    <!-- Itinerario Ceremonia y Recepción -->
+    <section id="itinerary-section">
+      <div id="ceremony">
+        <img id="ceremony-image" alt="ceremony">
+        <h2>Ceremonia</h2>
+        <p id="ceremony-place"></p>
+        <p id="ceremony-address"></p>
+        <p><span id="ceremony-date"></span> | <span id="ceremony-time"></span></p>
+        <button id="ceremony-map">Cómo llegar</button>
+      </div>
+      <div id="reception">
+        <img id="reception-image" alt="reception">
+        <h2>Recepción</h2>
+        <p id="reception-place"></p>
+        <p id="reception-address"></p>
+        <p><span id="reception-date"></span> | <span id="reception-time"></span></p>
+        <button id="reception-map">Cómo llegar</button>
+      </div>
+    </section>
+
+    <!-- Lluvia de sobres -->
+    <section id="gift-section">
+        <img id="gift-image" alt="gift">
+      <h2>¡Tu presencia, nuestro mejor regalo!</h2>
+      <p id="abroad-gift-message"></p>
+      <div id="bank-details"></div>
+      <p id="abroad-gift-message"></p>
+      <p>¡Muchas Gracias!</p>
+    </section>
+
+    <!-- Dress code -->
+    <section id="dresscode-section">
+        <img id="dresscode-image" alt="dresscode">
+         <h2>Dress Code</h2>
+
+      <div id="dresscode-details">
+          <p>Para ayudarte a elegir tu atuendo, hemos preparado algunas ideas que pueden inspirarte. El blanco y el ivory están reservados para la novia.</p>
+      </div>
+
+        <div id="dresscode-inspo" class="inspo-buttons">
+          <button onclick="window.open('https://es.pinterest.com/search/pins/?q=Vestidos%20invitadas%20de%20mujeres%20paleta%20colores%20pastel&rs=typed', '_blank')">Inspiración para Mujeres</button>
+          <button onclick="window.open('https://es.pinterest.com/search/pins/?q=Trajes%20beige%20para%20playa%20para%20hombres%20invitados&rs=typed', '_blank')">Inspiración para Hombres</button>
+        </div>
+    </section>
+
+    <!-- Buenos deseos -->
+    <section id="wishes-section">
+      <h2>Buenos Deseos</h2>
+      <button id="show-wishes">Ver Buenos Deseos</button>
+      <div id="wishes-container"></div>
+      <button id="send-wish">Enviar Buenos Deseos</button>
+      <div id="wish-form" class="hidden">
+        <input id="wish-name" type="text" placeholder="Tu nombre">
+        <textarea id="wish-message" placeholder="Tu mensaje"></textarea>
+        <button id="submit-wish">Enviar</button>
+      </div>
+    </section>
+
+    <section id="hotel-section">
+      <h2>Hospedaje</h2>
+      <div class="hotel-info-box">
+        <p class="hotel-intro">Hotel Grand Bavaro Princess</p>
+        <p class="hotel-description">Si deseas hospedarte en el lugar del evento, aquí puedes hacer tu reserva:</p>
+      </div>
+      
+    
+      <button class="hotel-toggle" data-target="option1">Página Web</button>
+      <div id="option1" class="hotel-content hidden">
+        <p><a href="https://www.princess-hotels.com/punta-cana/grand-bavaro-princess/" target="_blank">Haz clic aquí para reservar</a></p>
+      </div>
+      
+      <div class="hotel-accordion">
+        <button class="hotel-toggle" data-target="option2">Correo</button>
+        <div id="option2" class="hotel-content hidden">
+          <p>
+            <a href="mailto:concierge.bavaro@princess-hotels.com" target="_blank">
+              Manda un Mail
+            </a>
+          </p>          
+        </div>
+    
+        <button class="hotel-toggle" data-target="option3">Booking</button>
+        <div id="option3" class="hotel-content hidden">
+          <p><a href="https://www.booking.com/Share-cZ741p" target="_blank">Reserva tu estadia</a></p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Confirmación -->
+    <section id="rsvp-section">
+       <img id="rsvp-image" alt="rsvp">
+      <h2>Confirmación</h2>
+      <p id="rsvp-message"></p>
+      <button id="form-confirm">Confirmar</button>
+    </section>
+
+    <!-- Foto final -->
+    <section id="final-photo-section">
+      <img id="final-photo" alt="Foto final">
+    </section>
+
+    <!-- Frase final -->
+    <section id="final-message-section">
+      <p id="final-message"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+     <!--<div id="social-icons"></div>-->
+      <div class="footer-logo">
+        <img id="footer-logo" alt="Logo de la empresa">
+      </div>
+    </footer>    
+
+  </div>
+       
+</body>
+</html>
+
+

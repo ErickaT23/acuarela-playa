@@ -1,0 +1,738 @@
+/* VARIABLES GLOBALES */
+:root {
+    /* Colores base estilo acuarela */
+    --background-color: white;
+    --amarillo: #fff7cc;
+    --beige:#faefb2;
+    --text-color: #2FA2A1;
+    --accent-color: white;
+    
+    /* Tipografías */
+    --font-title: 'Great Vibes', cursive;
+    --font-body: 'Cormorant Garamond', serif;
+    
+    
+    /* Tamaños de letra */
+    --font-size-title: 3rem;
+    --font-size-title-small: 2.5rem;
+    --font-size-subtitle: 2rem;
+    --font-size-text: 1.2rem;
+    
+    /* Otros */
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* RESET BÁSICO */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: var(--background-color);
+    font-family: var(--font-body);
+    color: var(--text-color);
+    overflow-x: hidden;
+  }
+  
+  /* SECCIONES GENERALES */
+  section {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  h1, h2, h3 {
+    font-family: var(--font-title);
+    color: var(--text-color);
+  }
+  
+  h1 {
+    font-size: var(--font-size-title);
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: var(--font-size-subtitle);
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: var(--font-size-text);
+    margin-bottom: 10px;
+  }
+
+  /* SOBRE */
+#envelope {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--background-color);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+  }
+  #envelope-top, #envelope-bottom {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 1s ease;
+  }
+  #envelope-top {
+    background-image: url('/images/sobre.png'); /* Usa tu imagen */
+    background-position: top center;
+  }
+  #envelope-bottom {
+    background-image: url('/images/sobre.png'); /* Usa tu imagen */
+    background-position: bottom center;
+  }
+  #seal {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 2;
+  }
+  #seal h2{
+    margin: 0;
+    font-size: 2.5rem;
+    color: #2FA2A1;
+    font-family: var(--font-body);
+  }
+  /* Estado de apertura */
+  .open #envelope-top {
+    transform: translateY(-100%);
+  }
+  .open #envelope-bottom {
+    transform: translateY(100%);
+  }
+  /* Ocultar cuando abre */
+  .hidden {
+    display: none !important;
+  }
+  /* HERO (Foto inicial) */
+  #hero {
+    position: relative;
+  }
+  #hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0; /* Quitamos cualquier margen */    
+  }
+  #hero {
+    position: relative;
+    padding: 0;
+  }  
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    width: 300px;
+    height: auto;
+  }
+  .hero-text h1 {
+    margin-top: -300px;
+    color: white;
+    font-size: 40px;
+  }
+  .hero-text h2{
+    margin-top: -35px;
+    color: white;
+    font-size: 28px;
+  }
+  /* SECCIÓN MÚSICA */
+  #music-section {
+    background-image: url(/images/82.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    margin-top: -20px;
+    z-index: 1;
+    position: relative;
+  }
+  #music-section h2{
+    color: 	#2FA2A1;
+  }
+  button {
+    background: rgb(248, 244, 237);
+    color: 	#2FA2A1;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+    box-shadow: var(--shadow);
+  }
+  button:hover {
+    background: var(--text-color);
+    color: white;
+  }
+  
+  /* PROGRESO DE MÚSICA */
+  #progress-container {
+    margin-top: 20px;
+  }
+  
+  #progress-bar {
+    width: 80%;
+  }
+  /* Estilo para la barra de progreso (input range) */
+#progress-bar {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  background: 	#2FA2A1; /* Color pastel base */
+  border-radius: 5px;
+  outline: none;
+  margin: 10px 0;
+}
+
+/* Riel (fondo) */
+#progress-bar::-webkit-slider-runnable-track {
+  background: 	#6bc7c4;
+  height: 8px;
+  border-radius: 5px;
+}
+
+/* Pulgarcito (el círculo que se mueve) */
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background:var(--accent-color);
+  cursor: pointer;
+  margin-top: -4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Para Firefox */
+#progress-bar::-moz-range-track {
+  background: var(--beige);
+  height: 8px;
+  border-radius: 5px;
+}
+
+#progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background:var(--accent-color);
+  cursor: pointer;
+}
+
+  /* SECCIÓN CONTADOR */
+  #countdown-section {
+    background-image: url('/images/playa.png'); /* cambia el nombre según tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* opcional: para efecto parallax suave */
+    margin-top: -35px;
+    padding: 40px 20px;
+  }
+  #marriage-announcement {
+    background-color: rgb(165 165 165 / 57%); /* blanco con opacidad */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  #marriage-announcement {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+  #marriage-announcement h2 {
+    font-family: var(--font-title);
+    font-size: var(--font-size-title);
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 30px;
+  }
+  #marriage-announcement p {
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  .unit {
+    background: rgb(165 165 165 / 57%);
+    padding: 0;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    color: white;
+  }
+  .number {
+    font-size: 1.5rem;
+  }
+  .label {
+    font-size: 0.9rem;
+  }
+  #calendar-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+  #calendar-button button {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    background-color: var(--accent-color);
+    color: #2FA2A1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: background 0.3s;
+    font-family: var(--font-body);
+  }
+  #calendar-button button:hover {
+    background-color: var(--accent-color);
+  }
+  /* INVITADO y PASES */
+  #guest-name-section {
+    background-color: #186b76;
+    padding: 20px;
+  }
+  
+  #passes-section {
+    background-color: #48D1CC;
+    padding: 20px;
+  }
+  
+  #guest-name-section .guest-title {
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  #guest-name-section .guest-message {
+    font-size: 1.1rem;
+    color: white;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  #passes-section p {
+    font-size: 1.4rem;
+    color: white;
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* ITINERARIO */
+  #itinerary-section {
+    background-color: transparent;
+  }
+  
+  #itinerary-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #itinerary-section p{
+    font-size: var(--font-size-text);
+  }
+  #ceremony img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #reception img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #itinerary-section button {
+    margin-top: 10px;
+    font-family: var(--font-body);
+  }
+  /* LLUVIA DE SOBRES */
+  #gift-section {
+    background: transparent;
+    border-radius: 10px;
+    margin-top: 0;
+  }
+  #gift-section h2 {
+    font-size: var(--font-size-title-small);
+  }
+  #gift-section p {
+    font-size: var(--font-size-text);
+  }
+  #gift-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #gift-section {
+    text-align: center;
+    padding: 10px 20px;
+  }
+  .bank-toggle {
+    font-size: var(--font-size-text);
+    padding: 12px 24px;
+    background-color: rgb(248, 244, 237);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    transition: background 0.3s;
+    font-family: var(--font-body);
+    margin: 10px auto;
+    box-shadow: var(--shadow);
+  }
+  .bank-toggle:hover {
+    background-color: var(--text-color);
+  }
+  .bank-details {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    padding: 0 15px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .bank-details.open {
+    max-height: 300px; /* ajusta según el contenido */
+    opacity: 1;
+    padding: 15px;
+  }
+  .bank-details p {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: var(--text-color);
+    font-size: var(--font-size-text);
+  }
+  /* DRESS CODE */
+  #dresscode-section {
+    background: transparent;
+  }
+  #dresscode-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #dresscode-section p{
+    font-size: var(--font-size-text);
+  }
+  #dresscode-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #dresscode-inspo button{
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+  }
+  /* Modal */
+.hidden {
+  display: none !important;
+}
+  /* BUENOS DESEOS */
+  #wishes-section {
+    background-image: url(/images/82.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1; /* ✅ Lo traemos al frente */
+    margin-bottom: -37px;
+  }
+  
+  #wishes-section h2{
+    font-size: var(--font-size-title-small);
+    color: #2FA2A1;
+  }
+  #wishes-section p{
+    font-size: var(--font-size-text);
+    color: #2FA2A1;
+  }  
+  #show-wishes button {
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+  }
+  #wish-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  #wish-form input,
+  #wish-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: var(--font-body, Arial, sans-serif);
+    font-size: 1rem;
+    background-color: #fff;
+    color: #2FA2A1;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  #wish-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  #wish-form button {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: var(--accent-color);
+    color: #2FA2A1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
+    font-family: var(--font-body, Arial, sans-serif);
+  }
+  
+  #wish-form button:hover {
+    background-color: var(--text-color);
+  }
+  /* CONFIRMACIÓN */
+  #rsvp-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #rsvp-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #rsvp-section p{
+    font-size: var(--font-size-text);
+  }
+  #rsvp-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* FOTO FINAL */
+  #final-photo-section{
+    padding: 0;
+    margin-bottom: 0;
+  }
+  #final-photo {
+    width: 100%;
+    height: auto;
+  }
+  /* FRASE FINAL */
+  #final-message-section {
+    background-color: #48d1cd9f;
+    margin-top: -5px;
+    padding: 30px 10px;
+  }
+  #final-message-section p{
+    font-size: var(--font-size-subtitle);
+    color: white;
+  }
+  /* FOOTER */
+  footer {
+    background: #186b76;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer img {
+    width: 100px;
+    margin-top: 10px;
+  }
+  
+  #social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+  }
+
+  #footer {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  #social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  #social-icons a {
+    color: white;
+    font-size: 2.5rem;
+    transition: color 0.3s;
+  }
+  
+  #social-icons a:hover {
+    color: white;
+  }
+  
+  .footer-logo img {
+    width: 70px;
+    height: auto;
+  }
+  
+  /* ANIMACIONES SCROLL */
+  section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* SECCIÓN HOTEL */
+  #hotel-section {
+    background-image: url('/images/playa.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    margin-top: 0 ;
+  }
+  #hotel-section h2 {
+    font-size: var(--font-size-title-small);
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+  .hotel-info-box {
+    background-color:rgb(165 165 165 / 57%); /* Fondo uniforme */
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 100%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .hotel-info-box .hotel-intro {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 8px;
+  }
+  
+  .hotel-info-box .hotel-description {
+    font-size: 1rem;
+    color: white;
+    margin: 0;
+  }
+  
+  .hotel-toggle {
+    background-color: var(--accent-color);
+    color: #2FA2A1;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    border: none;
+    border-radius: 6px;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 500px;
+    cursor: pointer; /* ← esto es clave */
+    box-shadow: var(--shadow);
+    display: block;
+  }
+  .hotel-content {
+    max-width: 600px;
+    margin: 10px auto 30px auto;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    align-items: center;
+  }
+  
+  .hotel-content p {
+    font-size: var(--font-size-text);
+    line-height: 1.5;
+    color: #2FA2A1;
+  }
+  
+  .hotel-content a {
+    color: #2FA2A1;
+    text-decoration: none;
+  }
+  .hidden {
+    display: none !important;
+  }
+  
+  .hotel-toggle {
+    cursor: pointer;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.7rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+    
+    #gallery-container img {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .unit {
+      width: 75px;
+      height: 75px;
+    }
+  }
+  

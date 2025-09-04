@@ -46,9 +46,10 @@ export const eventData = {
     finalPhoto: "/images/pareja-final.png",
     finalMessage: "Esperamos con ilusión poder celebrar juntos este momento tan especial",
     rsvp: {
-          rsvpImage: "/images/c.png", // asegúrate que exista
           whatsapp: "https://wa.me/50236011737?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20invitaci%C3%B3n",
+          rsvpMessage: "Por favor confirma tu asistencia lo antes posible."
     },
+
     footer: {
       social: {
         whatsapp: "https://wa.me/50236011737",

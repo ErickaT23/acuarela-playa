@@ -179,7 +179,7 @@ document.getElementById('show-wishes').addEventListener('click', () => {
 // --- Confirmaciones --- (espera a que loads.js defina eventData.rsvp)
 document.addEventListener('DOMContentLoaded', () => {
   const img = document.getElementById('rsvp-image');
-  const msg = document.getElementById('rsvp-message');
+  const msg = document.getElementById('rsvpMessage');
   const btn = document.getElementById('form-confirm');
 
   const checkRSVP = setInterval(() => {
